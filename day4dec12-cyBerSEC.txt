@@ -524,17 +524,53 @@ icmp 192.168.108.88:57096  192.168.103.12:57096  8.8.8.8:57096         8.8.8.8:5
 icmp 192.168.108.88:56584  192.168.103.12:56584  8.8.4.4:56584         8.8.4.4:56584
 Total number of translations: 7
 
-FW-VPN-PH#
+CONFIGURING CISCO NETWORK SERVICES
+1. NETWORK TIME PROTOCOL: NTP uses udp port 123 makes all devices use the same time.
+C:\> nmap -sU time.google.com
+PORT      STATE  SERVICE
+123/udp   open   ntp
+33459/udp closed unknown
 
-TASK10: DO YOU HAVE TO REPLACED BY A.I AT WORK? REPLACED BY
-YOUNGER, SMARTER, CHEAPER NEW HIRES?? HOW TO BE UNTOUCHABLE EMPLOYEE?
-IF YOU WANT HAYUP/SIX DIGITS SWELDO/untouchable status.
-you need HAYUP/SIX DIGITS SWELDO Habits.
+Conf r1-fw to use time.google.com ntp server 
+conf t
+ntp server time.google.com 
+end
+sh ntp assoc
+sh ntp status
+if delayed: 
+conf t
+ntp update-calendar 
 
+2. SECURE SHELLSERVER:ssh version 2
+step1 - domain name, rsa 1024/2048, ssh config
 
+conf t
+ip domain-name rivanit.com
+username bry privilege 15 secret pass
+crypto key generate rsa
+ip ssh version 2
+ip shh time-out 120
+line vty 0 30 
+login local
+end
 
+IPSEC VPN S2S
+linBld2:
+sudo su
+ifconfig eth0 10.10.10.100 netmask 255.255.255.0 up
+route add default gw 10.10.10.11
+ping 10.10.10.11
 
+linBld3:
+sudo su
+ifconfig eth0 10.20.20.100 netmask 255.255.255.0 up
+route add default gw 10.20.20.12
+ping 10.20.20.12
 
+@R2-FW VPN 
+CONF T
+INT GI 2
+ip add 10.20.20.12 255.255.255.0
 
 
 
