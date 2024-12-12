@@ -1,0 +1,47 @@
+@@@Base Config for firewall1-ph
+
+en
+conf t
+int gi 1
+ip add 208.8.8.11 255.255.255.0
+no shut
+
+int gi 2
+ip add 10.10.10.11 255.255.255.0
+no shut
+
+int gi 3
+ip add 192.168.103.11 255.255.255.0
+no shut
+
+end
+wr 
+
+
+
+
+
+Base Config for firewall2-jpn
+
+conf t
+int gi 1
+ip add 208.8.8.12 255.255.255.0
+no shut
+
+int gi 2
+ip add 101.10.10.12 255.255.255.0
+no shut
+
+int gi 3
+ip add 192.168.103.12 255.255.255.0
+no shut
+
+end
+wr 
+
+
+TASk 4 Give internet to both 
+conf t
+ip route 0.0.0.0 0.0.0.0 208.8.8.2
+ip name-server 1.1.1.1 8.8.8.8
+end
