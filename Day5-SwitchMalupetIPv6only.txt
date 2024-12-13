@@ -280,6 +280,7 @@ Qpid: 802.1Q:trunking
 "make switch love each other!"LQ
 Darna: 802.1d: STP
 "slowly protect switches" , wait 30 seconds 
+1st state - listening = 15s  2nd state - learning = 15s, result is fwd or blk
 WonderWoman: 802.1w: rapidSTP
 "quickly,Brutally protect switches"
 SuperMan: 802.1s: MiSTP
@@ -322,7 +323,7 @@ Switch: show spanning-tree vlan 1
 Blk - LIS - LRN -FWD
       15s   15s     = 30s
 
-Task9.2: STP Port Roles: 
+Task9.2: STP Port Roles: 802.1d protect switches slowly/gently 30s 
 DesignatedPort/DP = fwd port of Root Bridge
 RootPort/RP = fwd port of non-root Bridge(1 only)
 AlternatePort/AP = blk port of nonRootPorts
@@ -342,14 +343,14 @@ spanning-tree Mode Rapid-pvst
 do sh spanning-tree vlan 1
 configure 802.1w/RapidSTP:
 
-TAAS: RootBridge: laspagin si Wonderwoman
+@TAAS/d1: RootBridge: laspagin si Wonderwoman
 config t
 spanning-tree Mode Rapid-pvst
 spanning-tree BackBoneFast
 spanning-tree portfast bpduguard default
 Int Range fa0/1-8
    spanning-tree Portfast
-@BABA:
+@BABA/d2/a1/a2:
 config t
 spanning-tree Mode Rapid-pvst
 spanning-tree UplinkFast
@@ -362,10 +363,10 @@ end
 #sh int status err-disabled 
 TAAS: bounce/UP/down, bring BACK TO LIFE.
 config t
-int fa 0/1
+int fa 0/3
  shut
  no shut
-int fa 0/3
+int fa 0/7
  shut
  no shut
 end
