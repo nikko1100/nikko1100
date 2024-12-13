@@ -487,10 +487,10 @@ GLBP: global load balancing protocol: all Cisco Router
 Companies: 2 or 3 telcos:
 @TAAS/PLDTinternet:
 config t
-hostname PLDTITO
+hostname PLDT-ITO
 Track 1 Int gi 0/1 line-protocol
 Int vlan 1
-standby 1 ip 10.__.1.6
+standby 1 ip 10.31.1.6
 standby 1 preempt
 standby 1 Priority 150
 standby 1 Track 1 decrement 60
@@ -506,11 +506,12 @@ standby 10 Track 1 decrement 60
 
 COREBABA/GLOBE:
 config t
-hostname GLOBEITO
+hostname GLOBE-ITO
 Int vlan 1
-standby 1 ip 10.__.1.6
+standby 1 ip 10.31.1.6
 standby 1 preempt
 standby 1 Priority 100
+end
 
 @D2 para real world
 config t
@@ -540,7 +541,7 @@ VRRP 10 preempt
 VRRP 10 Priority 100
 
 
-TASK17: Port-Aggregation/Etherchannel:
+TASK17: Port-Aggregation/Etherchannel: 100% Exam Lab!!!!!!!!!!!!!!!
 LACP:LINK AGGREGATION CONTROL PROTOCOL = ieee worldStandrad
 cisco = PortAggregationProtocl: PaGP
 Combinding Two/More Layer 2 links AS ONE! Unite/UNITY
@@ -553,7 +554,16 @@ Int Range fa0/10-12
  do sh int po1 | inc BW
 
 TASK18: HOW TO RETAIN ALL THE INFORMATION:
-run RSThayup: switchingLAB
+HOW TO GET CERTIFIED IN 2025
+MAGIC-FORMULA:
+1. Anti-Tamad Medicine
+	no one passes alone! tropa answerable! 
+	Above - mentor
+	Equal - challenges/someone you can relate with in knowledge
+	Below - help others, teach what you know
+2. How to pass the exam
+	310 USD! Go to Google and search ccna pearson view
+run RShayup: switchingLAB
 1.sh cdp neighbor
 2.Trunk all the Ports:
 d1/d2: e0/2,e0/1,e0/0,e0/3,e1/2,e1/3
